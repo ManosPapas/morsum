@@ -1,0 +1,26 @@
+<!-- Edit Modal -->
+<div class="modal fade" id="edit_{{id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel_{{ id }}">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      	<form method="post" id="edit-modal-form" action="edit_ingredient/{{ id }}">
+	      	<div class="modal-body">
+			  	<div class="form-group">
+  			    	<textarea class="form-control" rows="3" name="description" required>{{ description }}</textarea>
+  			    	<br>
+  			    	<textarea class="form-control" rows="3" name="ingredient" required>{{ ingredient }}</textarea>
+			   </div>			
+	      	</div>
+		    <div class="modal-footer">
+		       <input type="submit" name='edit-modal' class="btn btn-primary" value="submit">
+		       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		    </div>
+	    </form>
+    </div>
+  </div>
+</div>

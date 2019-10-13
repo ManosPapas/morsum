@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% block content %}
+	<h3>This is the ingredient page. Find different ingredient. You can modify them as you like!</h3>
+	
+	<div class="table-responsive">
+		<table class="table table-striped" id="admin-users-table">
+		  <thead class="thead-inverse table-dark">
+		    <tr>
+		      <th>Description</th>
+		      <th>Ingredient</th>
+		      <th>Actions</th>
+		    </tr>
+		  </thead>
+		  <button type="button" id="add-modal" data-toggle="modal" data-target="#add" name="add" class="btn btn-info btn-sm">Add</button>
+		  {% include 'modals/add_ingredient.html' %}
+		   <tbody>
+		  	{% for ingredient in ingredients %}
+			    <tr>
+			      <td class="align-middle">{{ ingredient[1] }}</td>
+			      <td class="align-middle">{{ ingredient[2] }}</td>
+			      <td class="align-middle">			      	
+			      	<button type="button" id="edit-modal" data-toggle="modal" data-target="#edit_{{ingredient[0]}}" name="edit" class="btn btn-warning btn-sm">Edit</button>
+			      	<button type="button" id="delete-modal" data-toggle="modal" data-target="#delete_{{ingredient[0]}}" name="delete" class="btn btn-danger btn-sm">Delete</button>
+
+			      	{% with id=ingredient[0], description=ingredient[1], ingredient=ingredient[2] %}
+			      		{% include 'modals/edit_ingredient.html' %}
+			      		{% include 'modals/delete_ingredient.html' %}
+			      	{% endwith %}
+			      </td>
+			    </tr>
+		    {% endfor %}
+		  </tbody> 
+		</table>
+	</div>  
+
+{% endblock %}

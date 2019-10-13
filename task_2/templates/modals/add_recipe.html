@@ -1,0 +1,33 @@
+<!-- Add Modal -->
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addModalLabel">Add new recipe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" id="add-modal-form" action="add_recipes">
+      		<div class="form-group">
+            <textarea class="form-control" rows="1" placeholder="Name" name="name" required></textarea>
+  			    <textarea class="form-control" rows="3" placeholder="Method" name="method" required></textarea>
+  			    <br>
+  			    <!-- <textarea class="form-control" rows="3" placeholder="Ingredients" name="ingredients" required></textarea> -->
+
+            <select name="ingredients[]" class="mdb-select colorful-select dropdown-primary md-form" multiple>
+                <option value="" disabled selected>Choose your ingredients</option>
+                {% for ingredient in ingredient_list %}
+                  <option value="{{ ingredient[2] }}">{{ ingredient[2] }}</option>
+                {% endfor %}
+            </select>
+            
+			   </div>
+			<div class="modal-footer">
+				<input type="submit" name='add-user-modal' class="btn btn-primary" value="submit">			
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+      </form>
+    </div>
+  </div>
+</div>

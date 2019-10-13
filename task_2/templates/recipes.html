@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block content %}
+	<h3>This is the recipe page. Find different recipes. You can modify them as you like!</h3>
+	
+	<div class="table-responsive">
+		<table class="table table-striped" id="admin-users-table">
+		  <thead class="thead-inverse table-dark">
+		    <tr>
+		    	<th>Name</th>
+		      	<th>Method</th>
+		      	<th>Ingredients</th>
+		      	<th>Actions</th>
+		    </tr>
+		  </thead>
+		  <button type="button" id="add-modal" data-toggle="modal" data-target="#add" name="add" class="btn btn-info btn-sm">Add</button>
+		  {% include 'modals/add_recipe.html' %}
+		   <tbody>
+		  	{% for recipe in recipes %}
+			    <tr>
+			      <td class="align-middle">{{ recipe[1] }}</td>
+			      <td class="align-middle">{{ recipe[2] }}</td>
+			      <td class="align-middle">{{ recipe[3] }}</td>
+			      <td class="align-middle">			      	
+			      	<button type="button" id="edit-modal" data-toggle="modal" data-target="#edit_{{recipe[0]}}" name="edit" class="btn btn-warning btn-sm">Edit</button>
+			      	<button type="button" id="delete-modal" data-toggle="modal" data-target="#delete_{{recipe[0]}}" name="delete" class="btn btn-danger btn-sm">Delete</button>
+
+			      	{% with id=recipe[0], name=recipe[1], method=recipe[2], ingredients=recipe[3], ingredient_list=ingredient_list %}
+			      		{% include 'modals/edit_recipe.html' %}
+			      		{% include 'modals/delete_recipe.html' %}
+			      	{% endwith %}
+			      </td>
+			    </tr>
+		    {% endfor %}
+		  </tbody> 
+		</table>
+	</div>  
+
+{% endblock %}
